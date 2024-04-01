@@ -1,35 +1,32 @@
-import authService from "../appwrite/auth";
-const Login = () => {
+import axios from "axios"
+import { useState } from "react"
 
-const handleClick = async (e) => {
-  e.preventDefault()
-   await authService.login()
+const Login = () => {
+  const [access, setAccess] = useState({})
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+async function getData() {
+  try {
+    const response = await axios.get("/login");
+    const authorizeUrl = response.data.authorizeUrl;
+    window.location.href = authorizeUrl;
+    setAccess(response.data)
+    console.log(access)
+  } catch (error) {
+    console.error(error);
+  }
 }
 
+const toggle = () => {
+  setIsLoggedIn((prevLogin) => !prevLogin)
+  setAccess({})
+}
+
+
+
   return (
-    <>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
+    <div >{isLoggedIn ?  (<button onClick={toggle}>logout</button>) :  ( <button onClick={getData} className="bg-green-600 outline-none text-gray-100 text-xl outline py-2 px-4">Login with spotify</button> ) }</div>
+  )
+}
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-green-700 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-              >
-                Sign in with Spotify
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Login;
+export default Login

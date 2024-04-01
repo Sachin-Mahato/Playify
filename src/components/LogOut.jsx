@@ -1,10 +1,7 @@
 
-function LogOut({onLogout}) {
+export const LogOut = () => {
   return (
-    <div>
-      <button onClick={onLogout}>logout</button>
-    </div>
-  );
+    <div>LogOut</div>
+  )
 }
 
-export default LogOut

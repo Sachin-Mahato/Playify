@@ -1,26 +1,12 @@
-import { BrowserRouter,  Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
-import LogOut from "./components/LogOut";
 
 function App() {
-
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={<Login  />}
-        />
-        <Route
-          path="/logout"
-          element={<LogOut  />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <main className="grid place-content-center h-[100vh]">
+      <Login />
+
+    </main>
   );
 }
 
 export default App;
-
-
