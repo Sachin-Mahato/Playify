@@ -1,12 +1,14 @@
+import { Dashboard } from "./components/Dashboard";
 import Login from "./components/Login";
 
-function App() {
+const code = new URLSearchParams(window.location.search).get("code");
+
+export default function App() {
+
+  
   return (
     <main className="grid place-content-center h-[100vh]">
-      <Login />
-
+      {code ? <Dashboard code={code} /> : <Login />}
     </main>
   );
 }
-
-export default App;
