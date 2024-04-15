@@ -1,18 +1,16 @@
-import {loginWithSpotify} from "../utils/Spotify"
+import { loginWithSpotify } from "../utils/auth"
+
 const Login = () => {
-  const handleLogin = async () => {
-    await loginWithSpotify()
-  };
+  const handleLogin = () => {
+    loginWithSpotify()
+  }
+
   return (
-    <div>
-      <button
-        onClick={handleLogin}
-        className="bg-green-600 outline-none text-gray-100 text-xl outline py-2 px-4 rounded-md"
-      >
-        Login with Spotify
-      </button>
+    <div className=" bg-green-600 outline-none text-gray-100 text-xl py-2 px-4 rounded-md">
+      <button onClick={handleLogin}>login with spotify</button>
     </div>
   );
 };
 
 export default Login;
+

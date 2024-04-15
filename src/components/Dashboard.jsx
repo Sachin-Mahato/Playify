@@ -1,13 +1,9 @@
-import Logout from "./Logout"
-import useAuth from "./useAuth"
+import Searchbar from "../components/Searchbar"
 
-export const Dashboard = ({code}) => {
-  const accessToken = useAuth(code)
+export const DashBoard = () => {
   return (
-    <> 
-    <div>Dashboard</div>
-    <div></div>
-    <Logout />
-    </>
+    <div>
+      <Searchbar />
+    </div>
   )
 }
