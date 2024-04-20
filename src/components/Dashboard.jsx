@@ -1,9 +1,11 @@
 import Searchbar from "../components/Searchbar"
 
-export const DashBoard = () => {
+ const DashBoard = ({search}) => {
   return (
     <div>
-      <Searchbar />
+      <Searchbar search={search}/>
     </div>
   )
 }
+
+export default DashBoard;

@@ -1,4 +1,12 @@
-function Searchbar() {
+import { useState } from "react";
+
+function Searchbar({search}) {
+  const [searchTrack, setSearchTrack] = useState("")
+
+  const handleSearch = async () => {
+    await search(searchTrack)
+  }
+
   return (
     <div className="pt-2 relative mx-auto text-gray-600">
       <input
@@ -6,8 +14,10 @@ function Searchbar() {
         type="search"
         name="search"
         placeholder="Search"
+        value={searchTrack}
+        onChange={(e) => setSearchTrack(e.target.value)}
       />
-      <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
+      <button type="submit" onClick={handleSearch}  className="absolute right-0 top-0 mt-5 mr-4">
         <svg
           className="text-gray-600 h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
